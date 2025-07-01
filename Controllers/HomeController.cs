@@ -33,6 +33,8 @@ public class HomeController : Controller
     }
 
     [HttpPost]
+   
+    [ValidateAntiForgeryToken]    // for security reason no one from outside can use it  
     public async Task<IActionResult> Create(Student std)
     {
         if (ModelState.IsValid)
@@ -75,6 +77,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]    // for security reason no one from outside can use it  
     public async Task<IActionResult> Edit(int id, Student std)
     {
         if (id != std.id)
@@ -93,7 +96,7 @@ public class HomeController : Controller
 
     // Delete the student for the database 
 
-    public async Task<IActionResult> Delete(int? id)
+    public IActionResult Delete(int? id)
     {
         if (id == null)
         {
@@ -109,6 +112,7 @@ public class HomeController : Controller
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]    // for security reason no one from outside can use it  
     public async Task<IActionResult> Delete(int id)
     {
 
